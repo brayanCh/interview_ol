@@ -1,6 +1,8 @@
 import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import Navbar from "../../components/navbar";
 import {ProjectsState, setProjectsLoading, setProjectsSuccess} from "../../redux/slices/projects";
+import './styles.css';
 
 
 const ProjectsPage = () => {
@@ -12,7 +14,7 @@ const ProjectsPage = () => {
     dispatch(setProjectsLoading());
     const response = await fetch('http://localhost:3000/projects');
     const data = await response.json();
-    
+
     dispatch(setProjectsSuccess(data));
     console.log(data, '[projects]');
   }
@@ -22,7 +24,15 @@ const ProjectsPage = () => {
   }, []);
 
   return (
-    <div></div>
+    <div className="page">
+      <Navbar />
+      <button className="send_button" onClick={fetchProjects}>Registrar Proyecto</button>
+      <div className="container_large">
+        <div className="scroll_x_container">
+          {}
+        </div>
+      </div>
+    </div>
   );
 };
 

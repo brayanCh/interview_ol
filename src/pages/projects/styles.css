@@ -1,0 +1,18 @@
+
+.container_large {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    height: 70%;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.scroll_x_container {
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 100%;
+    width: 100%;
+}
