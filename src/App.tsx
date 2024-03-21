@@ -3,12 +3,17 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import {Provider} from 'react-redux'
 import { store } from './redux/store'
 import LoginPage from './pages/login'
+import ProjectsPage from './pages/projects'
 
 // router que define las rutas de la aplicación
 const router = createBrowserRouter([
   {
     path: '/',
     element: <LoginPage />
+  },
+  {
+    path: '/projects',
+    element: <ProjectsPage />,
   },
   {
     path: '/about',
