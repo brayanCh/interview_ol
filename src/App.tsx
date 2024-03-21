@@ -1,34 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {Provider} from 'react-redux'
+import { store } from './redux/store'
+import LoginPage from './pages/login'
+
+// router que define las rutas de la aplicación
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <LoginPage />
+  },
+  {
+    path: '/about',
+    element: <h1>About</h1>
+  }
+])
+
 
 function App() {
-  const [count, setCount] = useState(0)
 
+  // Se envuelve el RouterProvider con el Provider de redux
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   )
 }
 
