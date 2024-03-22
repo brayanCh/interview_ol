@@ -1,10 +1,12 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import ModalNewProject from "../../components/modalNewProject";
+import ModalUpdateProject from "../../components/modalUpdateProject";
+import ModalUpdateUser from "../../components/modalUpdateUser";
 import Navbar from "../../components/navbar";
 import TableTitleRow from "../../components/tableTitleRow";
 import {AuthState} from "../../redux/slices/auth";
-import {ProjectsState, setProjectsLoading, setProjectsSuccess} from "../../redux/slices/projects";
+import {IProject, ProjectsState, setProjectsLoading, setProjectsSuccess} from "../../redux/slices/projects";
 import './styles.css';
 
 const projectsHeader = [
@@ -32,6 +34,8 @@ const ProjectsPage = () => {
   const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [openUpdateModal, setUpdateModalOpen] = useState<boolean>(false);
+  const [projectToUpdate, setProjectToUpdate] = useState<IProject | null>(null);
 
   const dispatch = useDispatch();
 
@@ -56,6 +60,13 @@ const ProjectsPage = () => {
     setIsAdmin(currentUser.user === 'admin');
   }, [currentUser]);
 
+  const handleUpdateProjects = (id: number) => {
+    const project = projects.find((project) => project.id === id);
+    if (project) {
+      setProjectToUpdate(project);
+      setUpdateModalOpen(true);
+    }
+  }
   return (
     <div className="page">
       <Navbar />
@@ -71,6 +82,12 @@ const ProjectsPage = () => {
           onClose={() => setOpenModal(false)}
           lengthProjects={projects.length}
           updateState={fetchProjects}
+        />
+        <ModalUpdateProject
+          isClosed={openUpdateModal}
+          onClose={() => setUpdateModalOpen(false)}
+          updateState={fetchProjects}
+          projectToUpdate={projectToUpdate}
         />
       </>}
       <div className="container_large">
@@ -98,7 +115,16 @@ const ProjectsPage = () => {
               }
 
               return (
-                  <TableTitleRow key={index} items={list}  isInTitle={false} isAdmin={isAdmin} id={project.id} update={fetchProjects} path="projects"/>
+                  <TableTitleRow
+                    key={index}
+                    items={list} 
+                    isInTitle={false}
+                    isAdmin={isAdmin}
+                    id={project.id}
+                    update={fetchProjects}
+                    mutateItem={() => handleUpdateProjects(project.id)}
+                    path="projects"
+                  />
               )
             })
             }

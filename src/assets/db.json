@@ -207,14 +207,14 @@
   "projects": [
     {
       "id": "1",
-      "project_name": "Tortor Dictum Institute",
+      "project_name": "Af",
       "repo_url": "https://",
       "client": "Phasellus Limited",
       "developers": "Victor Hugo Conto Carvajal|Jurgen David Lozano Valencia|Sandra Lorena Buitrón Ruiz|Sandra Lorena Buitrón Ruiz|Breyner Albarracín Lozada",
       "ci": false,
       "cd": false,
-      "frontend_tecnology": "React|React-Native",
-      "backend_tecnology": ".Net, NodeJS",
+      "frontend_tecnology": "React | Flutter",
+      "backend_tecnology": ".Net, Java",
       "databases": "SQLServer|PosgresSQL",
       "errors_count": 30,
       "warning_count": 2,
@@ -242,25 +242,10 @@
       "deploy_count": 13,
       "percentage_completion": 70,
       "report_nc": 194,
-      "status": "En Desarrollo"
+      "status": "Finalizado"
     },
     {
-      "id": "4",
-      "project_name": "Vitae Aliquam Ltd",
-      "repo_url": "https://",
-      "client": "Vivamus Non LLC",
-      "developers": "Maria del Pilar Muñoz Casañas|Victor Hugo Conto Carvajal",
-      "ci": false,
-      "cd": false,
-      "frontend_tecnology": "React|VueJS",
-      "backend_tecnology": ".Net, NodeJS",
-      "databases": "SQLServer|MySQL|MongoDB|PosgresSQL",
-      "errors_count": 51,
-      "warning_count": 5,
-      "deploy_count": 20,
-      "percentage_completion": 30,
-      "report_nc": 135,
-      "status": "En Desarrollo"
+      "id": "4"
     },
     {
       "id": "5",
@@ -2025,6 +2010,24 @@
       "percentage_completion": 0,
       "report_nc": 0,
       "status": "En Desarrollo"
+    },
+    {
+      "id": 84561,
+      "project_name": "qqqqq",
+      "repo_url": "wwww",
+      "client": "wewew",
+      "developers": "wewwww",
+      "ci": false,
+      "cd": false,
+      "frontend_tecnology": "qqsss",
+      "backend_tecnology": "sddsf",
+      "databases": "sdsdsd",
+      "errors_count": 0,
+      "warning_count": 0,
+      "deploy_count": 0,
+      "percentage_completion": 0,
+      "report_nc": 0,
+      "status": "En Desarrollo"
     }
   ],
   "rols": [
@@ -2042,7 +2045,7 @@
       "id": "1",
       "name": "Camilla",
       "last_name": "Wooten",
-      "url_photo": "",
+      "url_photo": "sssss",
       "rol": 1,
       "list": "Java|.Net|Python|Angular|React-Native|VueJS|NodeJS|SQLServer",
       "area": "Soporte"
@@ -2053,20 +2056,14 @@
     {
       "id": "3",
       "name": "Ali",
-      "last_name": "Barlow",
+      "last_name": "Barlowdddd",
       "url_photo": "",
       "rol": 1,
       "list": "React|React-Native|VueJS|Python|NodeJS|.Net|Angular|SQLServer",
       "area": "Staff"
     },
     {
-      "id": "4",
-      "name": "Whilemina",
-      "last_name": "George",
-      "url_photo": "",
-      "rol": 1,
-      "list": "SQLServer|Python|NodeJS|React-Native|VueJS|.Net|Angular|Java|React",
-      "area": "Staff"
+      "id": "4"
     },
     {
       "id": "5"
@@ -2074,7 +2071,7 @@
     {
       "id": "6",
       "name": "Renee",
-      "last_name": "Cain",
+      "last_name": "abel",
       "url_photo": "",
       "rol": 2,
       "list": "VueJS|Angular|.Net|Python|Java|React-Native|SQLServer",

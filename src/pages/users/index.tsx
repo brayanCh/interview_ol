@@ -1,10 +1,11 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import ModalNewUser from "../../components/modalNewUser";
+import ModalUpdateUser from "../../components/modalUpdateUser";
 import Navbar from "../../components/navbar";
 import TableTitleRow from "../../components/tableTitleRow";
 import {AuthState} from "../../redux/slices/auth";
-import {setUsersLoading, setUsersSuccess, UsersState} from "../../redux/slices/users";
+import {IUser, setUsersLoading, setUsersSuccess, UsersState} from "../../redux/slices/users";
 
 const userHeader = [
   "Id",
@@ -22,7 +23,9 @@ const UsersPage = () => {
   const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
   const dispatch = useDispatch();
   const [openModal, setOpenModal] = useState<boolean>(false);
+  const [openUpdateModal, setUpdateModalOpen] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [userToUpdate, setUserToUpdate] = useState<IUser | null>(null);
 
   const fetchUsers = async () => {
     dispatch(setUsersLoading());
@@ -44,6 +47,14 @@ const UsersPage = () => {
     setIsAdmin(currentUser.user === 'admin');
   }, [currentUser]);
 
+  const handleUpdateUser = (id: number) => {
+    const user = users.find((user) => user.id === id);
+    if (user) {
+      setUserToUpdate(user);
+      setUpdateModalOpen(true);
+    }
+  }
+
   return (
     <div className="page">
       <Navbar />
@@ -54,7 +65,13 @@ const UsersPage = () => {
           onClose={() => setOpenModal(false)}
           updateState={fetchUsers}
         />
-        </>
+        <ModalUpdateUser
+          isClosed={openUpdateModal}
+          onClose={() => setUpdateModalOpen(false)}
+          updateState={fetchUsers}
+          userToUpdate={userToUpdate}
+        />
+      </>
       }
       <div className="container_large">
         <div className="scroll_x_container">
@@ -65,9 +82,9 @@ const UsersPage = () => {
 
               if (!user) {
                 return <></>;
-              };
-              if (Object.keys(user).length < 2) {
-                return <></>;
+            };
+            if (Object.keys(user).length < 2) {
+              return <></>;
               } 
 
               for (const key in user) {
@@ -75,21 +92,30 @@ const UsersPage = () => {
                   const x = user[key].replaceAll("|", "\n");
                   list.push(x);
                   continue;
-                }
-                list.push(String(user[key]));
+              }
+              list.push(String(user[key]));
               }
 
               return (
-                <>
-                  <TableTitleRow key={index} items={list}  isInTitle={false} isAdmin={isAdmin} id={user.id} update={fetchUsers} path="users"/>
-                </>
-              )
+            <>
+              <TableTitleRow
+                key={index}
+                items={list} 
+                isInTitle={false}
+                isAdmin={isAdmin}
+                id={user.id}
+                update={fetchUsers}
+                mutateItem={() => handleUpdateUser(user.id)}
+                path="users"
+              />
+            </>
+            )
             })
-              }
-          </table>
+            }
+            </table>
+          </div>
         </div>
       </div>
-    </div>
   );
 };
 

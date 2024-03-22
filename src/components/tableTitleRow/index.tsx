@@ -8,9 +8,10 @@ interface IProps {
   id?: number;
   update?: () => void;
   path?: string;
+  mutateItem?: () => void;
 }
 
-const TableRow = ({ items, isInTitle, isAdmin, id, update, path }: IProps) => {
+const TableRow = ({ items, isInTitle, isAdmin, id, update, path, mutateItem }: IProps) => {
 
   return (
     <tr className="table_title_row">
@@ -29,6 +30,7 @@ const TableRow = ({ items, isInTitle, isAdmin, id, update, path }: IProps) => {
               method: "PUT",
             }).then(() => update?.());
             }}>Eliminar</button>
+          <button className="send_button" style={{backgroundColor: '#27b'}} onClick={() => mutateItem?.()}>Modificar</button> 
         </td>
       }
     </tr>

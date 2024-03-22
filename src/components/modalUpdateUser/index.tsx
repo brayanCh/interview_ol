@@ -1,13 +1,14 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {IUser} from "../../redux/slices/users";
 
 interface IProps {
   onClose: () => void;
   updateState: () => void;
-  isClosed: boolean
+  isClosed: boolean;
+  userToUpdate: IUser | null;
 }
 
-const ModalNewUser = ({ onClose, updateState, isClosed} : IProps) => {
+const ModalUpdateUser = ({ onClose, updateState, isClosed, userToUpdate} : IProps) => {
 
   const [newUser, setNewUser] = useState<IUser>({
     id: Math.floor(Math.random() * 100000),
@@ -33,17 +34,29 @@ const ModalNewUser = ({ onClose, updateState, isClosed} : IProps) => {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:3000/users", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newUser),
-    });
+    try {
+      const response = await fetch(`http://localhost:3000/users/${newUser.id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newUser),
+      });
+      const data = await response.json();
+      console.log(data, "data");
+    } catch (error) {
+      console.error(error);
+    }
     updateState();
     clearForm();
     onClose();
   }
+
+  useEffect(() => {
+    if (userToUpdate) {
+      setNewUser(userToUpdate);
+    }
+  }, [userToUpdate]);
 
   return (
     <>
@@ -53,7 +66,7 @@ const ModalNewUser = ({ onClose, updateState, isClosed} : IProps) => {
         clearForm();
         }}>
         <form onSubmit={onSubmit} onClick={(e) => e.stopPropagation()}>
-          <h1>Nuevo Usuario</h1>
+          <h1>Actualizar Usuario</h1>
 
           <label>Nombre</label>
           <input type="text" value={newUser.name} onChange={(e) => setNewUser({...newUser, name: e.target.value})} />
@@ -73,7 +86,7 @@ const ModalNewUser = ({ onClose, updateState, isClosed} : IProps) => {
           <label>Area</label>
           <input type="text" value={newUser.area} onChange={(e) => setNewUser({...newUser, area: e.target.value})} />
 
-          <button type="submit">Registrar Usuario</button>
+          <button type="submit">Actualizar Usuario</button>
         </form>
       </div>
       }
@@ -81,4 +94,4 @@ const ModalNewUser = ({ onClose, updateState, isClosed} : IProps) => {
   );
 }
 
-export default ModalNewUser;
+export default ModalUpdateUser;
