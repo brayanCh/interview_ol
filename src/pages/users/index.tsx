@@ -2,7 +2,8 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Navbar from "../../components/navbar";
 import TableTitleRow from "../../components/tableTitleRow";
-import {setUsersLoading, setUsersSuccess} from "../../redux/slices/users";
+import {AuthState} from "../../redux/slices/auth";
+import {setUsersLoading, setUsersSuccess, UsersState} from "../../redux/slices/users";
 
 const userHeader = [
   "Id",
@@ -16,7 +17,8 @@ const userHeader = [
 
 const UsersPage = () => {
 
-  const users = useSelector((state) => state.usersState.users);
+  const users = useSelector((state: {usersState: UsersState}) => state.usersState.users);
+  const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
   const dispatch = useDispatch();
 
   const fetchUsers = async () => {
@@ -30,6 +32,12 @@ const UsersPage = () => {
   useEffect(() => {
     fetchUsers();
   }, []);
+
+  useEffect(() => {
+    if (!currentUser) {
+      window.location.href = '/';
+    }
+  }, [currentUser]);
 
   return (
     <div className="page">

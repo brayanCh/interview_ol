@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
+import {authSlice} from './slices/auth'
 import {dashboardSlice} from './slices/dashboard'
 import {projectsSlice} from './slices/projects'
 import {usersSlice} from './slices/users'
@@ -10,6 +11,7 @@ export const store = configureStore({
     projects: projectsSlice.reducer,
     usersState: usersSlice.reducer,
     dashboardState: dashboardSlice.reducer,
+    auth: authSlice.reducer,
   },
 })
 

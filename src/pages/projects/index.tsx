@@ -2,6 +2,7 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Navbar from "../../components/navbar";
 import TableTitleRow from "../../components/tableTitleRow";
+import {AuthState} from "../../redux/slices/auth";
 import {ProjectsState, setProjectsLoading, setProjectsSuccess} from "../../redux/slices/projects";
 import './styles.css';
 
@@ -26,7 +27,8 @@ const projectsHeader = [
 
 const ProjectsPage = () => {
 
-  const projects = useSelector((state) => state.projects.projects);
+  const projects = useSelector((state : {projects : ProjectsState}) => state.projects.projects);
+  const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
   const dispatch = useDispatch();
 
   const fetchProjects = async () => {
@@ -40,6 +42,12 @@ const ProjectsPage = () => {
   useEffect(() => {
     fetchProjects();
   }, []);
+
+  useEffect(() => {
+    if (!currentUser) {
+      window.location.href = '/';
+    }
+  }, [currentUser]);
 
   return (
     <div className="page">

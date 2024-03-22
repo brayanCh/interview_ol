@@ -2,12 +2,14 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {Area, AreaChart, Bar, BarChart, CartesianGrid, Legend, ResponsiveContainer, Tooltip, XAxis, YAxis} from "recharts";
 import Navbar from "../../components/navbar";
+import {AuthState} from "../../redux/slices/auth";
 import {DashboardState, setCPUReport, setDashboardCards, setReleaseResume, setReportCommits} from "../../redux/slices/dashboard";
 import "./styles.css";
 
 const DashboardPage = () => {
 
   const {dashboard_cards, cpu_report, report_commits, release_resume} = useSelector((state: {dashboardState: DashboardState}) => state.dashboardState);
+  const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
   const dispatch = useDispatch();
 
   const fetchDashboardData = async () => {
@@ -41,6 +43,13 @@ const DashboardPage = () => {
   useEffect(() => {
     fetchDashboardData();
   }, []);
+
+
+  useEffect(() => {
+    if (!currentUser) {
+      window.location.href = '/';
+    }
+  }, [currentUser]);
 
   return (
     <div className="page" style={{height: 'auto'}}>
