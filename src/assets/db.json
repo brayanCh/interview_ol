@@ -2006,7 +2006,7 @@
       "status": "En Desarrollo"
     },
     {
-      "id": 102,
+      "id": "102",
       "project_name": "bbbbbb",
       "repo_url": "zzzzzz",
       "client": "xxxxxx",
@@ -2024,7 +2024,7 @@
       "status": "En Desarrollo"
     },
     {
-      "id": 75816,
+      "id": "75816",
       "project_name": "asdfasdasd",
       "repo_url": "asdfsadsasda",
       "client": "afsafdsfaf",
@@ -2952,6 +2952,15 @@
       "rol": 1,
       "list": "React-Native|VueJS|React|SQLServer|Java|Angular",
       "area": "Soporte"
+    },
+    {
+      "id": 74072,
+      "name": "sdsdsd",
+      "last_name": "sssss",
+      "url_photo": "ssss",
+      "rol": 54,
+      "list": "dsdad afsadf",
+      "area": "sdasdasd"
     }
   ]
 }

@@ -1,5 +1,6 @@
 import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import ModalNewUser from "../../components/modalNewUser";
 import Navbar from "../../components/navbar";
 import TableTitleRow from "../../components/tableTitleRow";
 import {AuthState} from "../../redux/slices/auth";
@@ -20,6 +21,7 @@ const UsersPage = () => {
   const users = useSelector((state: {usersState: UsersState}) => state.usersState.users);
   const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
   const dispatch = useDispatch();
+  const [openModal, setOpenModal] = useState<boolean>(false);
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const fetchUsers = async () => {
@@ -45,7 +47,15 @@ const UsersPage = () => {
   return (
     <div className="page">
       <Navbar />
-      {isAdmin && <button className="send_button">Registrar usuario</button>}
+      {isAdmin && <>
+        <button className="send_button" onClick={() => setOpenModal(true)}>Registrar usuario</button>
+        <ModalNewUser
+          isClosed={openModal}
+          onClose={() => setOpenModal(false)}
+          updateState={fetchUsers}
+        />
+        </>
+      }
       <div className="container_large">
         <div className="scroll_x_container">
           <table className="table">
