@@ -2,8 +2,10 @@
 .row_dashboard {
   display: flex;
   width: 90%;
+  max-width: 1200px;
   padding: 5% 0;
   justify-content: space-between;
+  margin-top: 90px;
 }
 
 
@@ -30,12 +32,47 @@
 }
 .server_info {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 90%;
-  height: 200px;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1100px;
+  height: 400px;
+  padding: 5%;
   background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   margin: 10px 0;
 }
+
+.commit_info {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1100px;
+  height: 320px;
+  padding: 5%;
+  background-color: #1D3BB2;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.commit_info h4 {
+  color: #fff;
+}
+
+.commit_info p {
+  color: #add5f2;
+}
+
+.release_info {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1100px;
+  height: 300px;
+  padding: 5%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
