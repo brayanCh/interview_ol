@@ -5,6 +5,7 @@ import { store } from './redux/store'
 import LoginPage from './pages/login'
 import ProjectsPage from './pages/projects'
 import UsersPage from './pages/users'
+import DashboardPage from './pages/dashboard'
 
 // router que define las rutas de la aplicación
 const router = createBrowserRouter([
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element: <h1>Dashboard</h1>,
+    element: <DashboardPage />,
   },
 ])
 

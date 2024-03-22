@@ -24,7 +24,6 @@ const UsersPage = () => {
     const response = await fetch('http://localhost:3000/users');
     const data = await response.json();
 
-    //console.log(data);
     dispatch(setUsersSuccess(data));
   }
 
@@ -51,7 +50,6 @@ const UsersPage = () => {
                 }
                 list.push(String(user[key]));
               }
-            console.log(list);
 
               return (
                 <TableTitleRow key={index} items={list}  isInTitle={false} />

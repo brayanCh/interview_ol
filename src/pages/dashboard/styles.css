@@ -1,0 +1,41 @@
+
+.row_dashboard {
+  display: flex;
+  width: 90%;
+  padding: 5% 0;
+  justify-content: space-between;
+}
+
+
+.container_small {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+}
+
+.container_small h4 {
+  font-size: 0.8rem;
+  color: #555;
+  text-align: center;
+  padding: 0;
+  margin: 5px;
+}
+.container_small p {
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+  color: #111;
+}
+.server_info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 200px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin: 10px 0;
+}
