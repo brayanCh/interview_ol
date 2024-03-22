@@ -1,5 +1,6 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
+import ModalNewProject from "../../components/modalNewProject";
 import Navbar from "../../components/navbar";
 import TableTitleRow from "../../components/tableTitleRow";
 import {AuthState} from "../../redux/slices/auth";
@@ -29,6 +30,9 @@ const ProjectsPage = () => {
 
   const projects = useSelector((state : {projects : ProjectsState}) => state.projects.projects);
   const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
+  const [openModal, setOpenModal] = useState<boolean>(false);
+
   const dispatch = useDispatch();
 
   const fetchProjects = async () => {
@@ -46,13 +50,29 @@ const ProjectsPage = () => {
   useEffect(() => {
     if (!currentUser) {
       window.location.href = '/';
+      return;
     }
+
+    setIsAdmin(currentUser.user === 'admin');
   }, [currentUser]);
 
   return (
     <div className="page">
       <Navbar />
-      <button className="send_button" onClick={fetchProjects}>Registrar Proyecto</button>
+      {isAdmin && <>
+        <button
+          onClick={() => setOpenModal(true)}
+          className="send_button"
+        >
+          Nuevo Proyecto
+        </button>
+        <ModalNewProject
+          isClosed={openModal}
+          onClose={() => setOpenModal(false)}
+          lengthProjects={projects.length}
+          updateState={fetchProjects}
+        />
+      </>}
       <div className="container_large">
         <div className="scroll_x_container">
           <table className="table">

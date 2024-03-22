@@ -32,7 +32,7 @@ const Navbar = () => {
         showMenu && (
 
           <div className="modal" onClick={() => setShowMenu(false)}>
-            <div className="menu" onClick={() => {}}>
+            <div className="menu" onClick={e => e.stopPropagation()}>
               <h2>ESTADISTICAS</h2>
               <button className="menu-item" onClick={() => navigate('/dashboard')}>dashboard</button>
 

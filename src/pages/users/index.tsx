@@ -1,4 +1,4 @@
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import Navbar from "../../components/navbar";
 import TableTitleRow from "../../components/tableTitleRow";
@@ -20,6 +20,7 @@ const UsersPage = () => {
   const users = useSelector((state: {usersState: UsersState}) => state.usersState.users);
   const currentUser = useSelector((state : {auth : AuthState}) => state.auth.currentUser);
   const dispatch = useDispatch();
+  const [isAdmin, setIsAdmin] = useState<boolean>(false);
 
   const fetchUsers = async () => {
     dispatch(setUsersLoading());
@@ -36,13 +37,15 @@ const UsersPage = () => {
   useEffect(() => {
     if (!currentUser) {
       window.location.href = '/';
+      return;
     }
+    setIsAdmin(currentUser.user === 'admin');
   }, [currentUser]);
 
   return (
     <div className="page">
       <Navbar />
-      <button className="send_button" >Registrar Usuario</button>
+      {isAdmin && <button className="send_button">Registrar usuario</button>}
       <div className="container_large">
         <div className="scroll_x_container">
           <table className="table">
