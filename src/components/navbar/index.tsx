@@ -3,11 +3,15 @@ import HamburgerMenu from '../../assets/hamburger-menu-svgrepo-com.svg';
 import Notification from '../../assets/bell-svgrepo-com.svg';
 import {useState} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {clearCurrentUser} from '../../redux/slices/auth';
 
 const Navbar = () => {
 
   const [showMenu, setShowMenu] = useState<boolean>(false);
+  const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   return (
     <>
@@ -37,6 +41,12 @@ const Navbar = () => {
 
               <h2>USUARIOS</h2>
               <button className="menu-item" onClick={() => navigate('/users')} >Lista de usuarios</button>
+              <h2>Dejar sesion</h2>
+              <button className="menu-item" onClick={() => {
+                dispatch(clearCurrentUser());
+                localStorage.removeItem("user");
+                navigate('/')
+                }} >Logout</button>
             </div>
           </div>
         )

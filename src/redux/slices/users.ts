@@ -11,9 +11,6 @@ export type IUser = {
   "area": string,
 };
 
-
-
-
 export type UsersState = {
   users: IUser[],
   loading: boolean,
