@@ -1,0 +1,9 @@
+
+.table_title_row {
+}
+.table_title_cell {
+  width: 100px;
+  padding: 5px 20px;
+  border-bottom: 1px solid #333;
+  border-right: 1px solid #333;
+}

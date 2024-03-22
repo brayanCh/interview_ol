@@ -20,6 +20,7 @@ export type IProject = {
   "status": string,
 };
 
+
 export type ProjectsState = {
   projects: IProject[],
   loading: boolean,

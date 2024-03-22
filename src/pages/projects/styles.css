@@ -12,7 +12,12 @@
 
 .scroll_x_container {
     overflow-x: auto;
-    white-space: nowrap;
+    white-space: pre;
     height: 100%;
+    width: 100%;
+}
+
+.scroll_x_container table {
+    border-collapse: collapse;
     width: 100%;
 }
