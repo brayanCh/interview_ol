@@ -4,6 +4,7 @@ import {Provider} from 'react-redux'
 import { store } from './redux/store'
 import LoginPage from './pages/login'
 import ProjectsPage from './pages/projects'
+import UsersPage from './pages/users'
 
 // router que define las rutas de la aplicación
 const router = createBrowserRouter([
@@ -17,7 +18,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/users',
-    element: <h1>Users</h1>,
+    element: <UsersPage />,
   },
   {
     path: '/dashboard',

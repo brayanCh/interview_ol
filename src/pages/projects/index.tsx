@@ -6,22 +6,22 @@ import {ProjectsState, setProjectsLoading, setProjectsSuccess} from "../../redux
 import './styles.css';
 
 const projectsHeader = [
-  "id",
-  "project_name",
-  "repo_url",
-  "client",
-  "developers",
-  "ci",
-  "cd",
-  "frontend_tecnology",
-  "backend_tecnology",
-  "databases",
-  "errors_count",
-  "warning_count",
-  "deploy_count",
-  "percentage_completion",
-  "report_nc",
-  "status",
+  "Id",
+  "Project Name",
+  "Repo Url",
+  "Client",
+  "Developers",
+  "Ci",
+  "Cd",
+  "Frontend Tecnology",
+  "Backend Tecnology",
+  "Databases",
+  "Errors_count",
+  "Warning_count",
+  "Deploy_count",
+  "Percentage_completion",
+  "Report_nc",
+  "Status",
 ]
 
 const ProjectsPage = () => {
@@ -56,7 +56,6 @@ const ProjectsPage = () => {
                 if (key === "developers") {
                   const x = project[key].replaceAll("|", "\n");
                   list.push(x);
-                  console.log(x);
                   continue;
                 }
                 list.push(String(project[key]));
