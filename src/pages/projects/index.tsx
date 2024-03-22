@@ -80,6 +80,13 @@ const ProjectsPage = () => {
             {projects?.map((project, index) => {
               const list = []
 
+              if (!project) {
+                return <></>;
+              };
+              if (Object.keys(project).length < 2) {
+                return <></>;
+              } 
+
               for (const key in project) {
                 if (key === "developers") {
                   const x = project[key].replaceAll("|", "\n");
@@ -91,7 +98,7 @@ const ProjectsPage = () => {
               }
 
               return (
-                <TableTitleRow key={index} items={list}  isInTitle={false} />
+                  <TableTitleRow key={index} items={list}  isInTitle={false} isAdmin={isAdmin} id={project.id} update={fetchProjects} path="projects"/>
               )
             })
             }

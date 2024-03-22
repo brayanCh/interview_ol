@@ -224,22 +224,7 @@
       "status": "En Desarrollo"
     },
     {
-      "id": "2",
-      "project_name": "Velit Justo LLC",
-      "repo_url": "https://",
-      "client": "Venenatis Limited",
-      "developers": "Sandra Lorena Buitrón Ruiz|Franci Eliana Viveros Martínez|Alvaro Eduardo Zapata|Joan Alexis Cordoba Narvaez|Victor Hugo Conto Carvajal|Leonardo Zapata Mora|Breyner Albarracín Lozada",
-      "ci": false,
-      "cd": false,
-      "frontend_tecnology": "VueJS|React-Native|Angular|React",
-      "backend_tecnology": "Python, .Net, NodeJS",
-      "databases": "ORACLE|PosgresSQL",
-      "errors_count": 57,
-      "warning_count": 4,
-      "deploy_count": 9,
-      "percentage_completion": 92,
-      "report_nc": 104,
-      "status": "En Desarrollo"
+      "id": "2"
     },
     {
       "id": "3",
@@ -2063,13 +2048,7 @@
       "area": "Soporte"
     },
     {
-      "id": "2",
-      "name": "Grady",
-      "last_name": "Stevens",
-      "url_photo": "",
-      "rol": 1,
-      "list": "VueJS|Angular|.Net|React-Native|React|Java|Python|SQLServer|NodeJS",
-      "area": "Soporte"
+      "id": "2"
     },
     {
       "id": "3",
@@ -2090,13 +2069,7 @@
       "area": "Staff"
     },
     {
-      "id": "5",
-      "name": "Lani",
-      "last_name": "Dickerson",
-      "url_photo": "",
-      "rol": 2,
-      "list": "VueJS|NodeJS|React|Angular|.Net|React-Native|SQLServer",
-      "area": "Staff"
+      "id": "5"
     },
     {
       "id": "6",
@@ -2135,13 +2108,7 @@
       "area": "Soporte"
     },
     {
-      "id": "10",
-      "name": "Iona",
-      "last_name": "Merritt",
-      "url_photo": "",
-      "rol": 1,
-      "list": "Angular|React-Native|Java|React|Python|NodeJS|.Net|VueJS|SQLServer",
-      "area": "Soporte"
+      "id": "10"
     },
     {
       "id": "11",

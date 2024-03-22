@@ -63,6 +63,13 @@ const UsersPage = () => {
             {users?.map((user, index) => {
               const list = []
 
+              if (!user) {
+                return <></>;
+              };
+              if (Object.keys(user).length < 2) {
+                return <></>;
+              } 
+
               for (const key in user) {
                 if (key === "list") {
                   const x = user[key].replaceAll("|", "\n");
@@ -73,7 +80,9 @@ const UsersPage = () => {
               }
 
               return (
-                <TableTitleRow key={index} items={list}  isInTitle={false} />
+                <>
+                  <TableTitleRow key={index} items={list}  isInTitle={false} isAdmin={isAdmin} id={user.id} update={fetchUsers} path="users"/>
+                </>
               )
             })
               }
